@@ -41,7 +41,7 @@ async function userSignin(req, res, next) {
     } else {
       return res.status(401).send({'response': {'message': 'login failed invalid user_name'}});
     }
-    const token = jwt.sign({user_id: userRegister.id, role: userRegister.role}, 'secretkey');
+    const token = jwt.sign({user_id: userRegister.id, role: userRegister.role}, process.env.SECRET_KEY);
     return res.status(200).send({'response': {'message': 'login successful', 'user': userRegister, 'token': token}});
   } catch (ex) {
     next(ex);

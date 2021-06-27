@@ -12,7 +12,7 @@ function checkRoles(roles = []) {
         });
       }
       try {
-        userRole = jwt.decode(token, 'secretkey').role;
+        userRole = jwt.decode(token, process.env.SECRET_KEY).role;
       } catch (error) {
         return res.status(401).send({
           'response': {

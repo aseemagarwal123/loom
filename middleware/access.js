@@ -5,7 +5,7 @@ function checkUserAccess() {
     try {
       const id = req.params.id || req.query.worker_id;
       const token = req.header('x-auth-token');
-      const decoded = jwt.decode(token, 'secretkey');
+      const decoded = jwt.decode(token, process.env.SECRET_KEY);
       const userRole = decoded.role;
       const userId = decoded.user_id;
       if (!id) {
@@ -37,7 +37,7 @@ function checkJobAccess() {
     try {
       const id = req.params.id;
       const token = req.header('x-auth-token');
-      const decoded = jwt.decode(token, 'secretkey');
+      const decoded = jwt.decode(token, process.env.SECRET_KEY);
       const userRole = decoded.role;
       const jobObject = await job.findById(id);
       if (!jobObject) {

@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 async function jobCreate(req, res, next) {
   try {
     const token = req.header('x-auth-token');
-    const decoded = jwt.decode(token, 'secretkey');
+    const decoded = jwt.decode(token, process.env.SECRET_KEY);
     req.body.assigned_by = decoded.user_id;
     let jobRegister = new job(req.body);
     jobRegister = await jobRegister.save();

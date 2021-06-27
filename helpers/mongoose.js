@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 const mongoose = require('mongoose');
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb+srv://aseem:aseem123@cluster0.93hwa.mongodb.net/loom?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGODB_URI;
 PORT = 4000;
 
 
