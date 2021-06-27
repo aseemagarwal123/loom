@@ -1,9 +1,6 @@
 /* eslint-disable linebreak-style */
 const mongoose = require('mongoose');
 const MONGO_URI = process.env.MONGODB_URI;
-PORT = 4000;
-
-
 // Fixing deprication warnings
 const options = {
   useNewUrlParser: true,

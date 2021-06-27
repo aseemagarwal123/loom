@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 function checkRoles(roles = []) {
   return (req, res, next) => {
-    console.log('here');
     try {
       const token = req.header('x-auth-token');
       if (!token) {
