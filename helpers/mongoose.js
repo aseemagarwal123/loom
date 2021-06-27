@@ -1,0 +1,33 @@
+/* eslint-disable linebreak-style */
+const mongoose = require('mongoose');
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb+srv://aseem:aseem123@cluster0.93hwa.mongodb.net/loom?retryWrites=true&w=majority';
+PORT = 4000;
+
+
+// Fixing deprication warnings
+const options = {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+};
+
+function connect() {
+  return mongoose.connect(MONGO_URI, options)
+      .then(() => {
+        console.log('Connected to mongodb');
+      })
+      .catch((err) => {
+        console.log('Couldnt connect to mongodb:', err.message);
+        process.exit(1);
+      });
+}
+
+function close() {
+  return mongoose.connection.close();
+}
+
+module.exports = {
+  connect,
+  close,
+};
